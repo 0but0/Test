@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+<!-- <virtualType name="OmnyfyCustomization\UploadFile\Model\ResourceModel\UploadFile\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">changi_resource_file</argument>
+			<argument name="resourceModel" xsi:type="string">OmnyfyCustomization\UploadFile\Model\ResourceModel\Upload\Collection</argument>
+		</arguments>
+	</virtualType> -->
+	<type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+		<arguments>
+			<argument name="collections" xsi:type="array">
+				<item name="uploadfile_upload_listing_data_source" xsi:type="string">OmnyfyCustomization\UploadFile\Model\ResourceModel\Upload\Grid\Collection</item>
+			</argument>
+		</arguments>
+	</type>
+
+    <type name="OmnyfyCustomization\UploadFile\TestImageUpload">
+        <arguments>
+            <argument name="baseTmpPath" xsi:type="string">test/tmp</argument>
+            <argument name="basePath" xsi:type="string">test</argument>
+        </arguments>
+    </type>
+</config>

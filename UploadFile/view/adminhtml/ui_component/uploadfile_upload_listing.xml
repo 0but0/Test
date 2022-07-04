@@ -1,0 +1,84 @@
+<?xml version="1.0" ?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+	<argument name="data" xsi:type="array">
+		<item name="js_config" xsi:type="array">
+			<item name="provider" xsi:type="string">uploadfile_upload_listing.uploadfile_upload_listing_data_source</item>
+		</item>
+	</argument>
+	<settings>
+		<spinner>uploadfile_upload_columns</spinner>
+		<deps>
+			<dep>uploadfile_upload_listing.uploadfile_upload_listing_data_source</dep>
+		</deps>
+		<buttons>
+			<button name="add">
+				<url path="*/*/new"/>
+				<class>primary</class>
+				<label translate="true">Add New File</label>
+			</button>
+		</buttons>
+	</settings>
+	<dataSource name="uploadfile_upload_listing_data_source" component="Magento_Ui/js/grid/provider">
+		<settings>
+			<updateUrl path="mui/index/render"/>
+		</settings>
+		<aclResource>OmnyfyCustomization_UploadFile::UploadFile</aclResource>
+		<dataProvider name="uploadfile_upload_listing_data_source" class="OmnyfyCustomization\UploadFile\Ui\DataProvider\ResourceFileDataProvier">
+			<settings>
+				<requestFieldName>uploadfile_id</requestFieldName>
+				<primaryFieldName>uploadfile_id</primaryFieldName>
+			</settings>
+		</dataProvider>
+	</dataSource>
+	<listingToolbar name="listing_top">
+		<settings>
+			<sticky>true</sticky>
+		</settings>
+		<bookmark name="bookmarks"/>
+		<columnsControls name="columns_controls"/>
+		<filters name="listing_filters"/>
+		<paging name="listing_paging"/>
+	</listingToolbar>
+	<columns name="uploadfile_upload_columns">
+		<settings>
+			<editorConfig>
+				<param name="selectProvider" xsi:type="string">uploadfile_upload_listing.uploadfile_upload_listing.uploadfile_upload_columns.ids</param>
+				<param name="enabled" xsi:type="boolean">true</param>
+				<param name="indexField" xsi:type="string">uploadfile_id</param>
+				<param name="clientConfig" xsi:type="array">
+					<item name="saveUrl" xsi:type="url" path="Omnyfycustomization_uploadfile/UploadFile/inlineEdit"/>
+					<item name="validateBeforeSave" xsi:type="boolean">false</item>
+				</param>
+			</editorConfig>
+			<childDefaults>
+				<param name="fieldAction" xsi:type="array">
+					<item name="provider" xsi:type="string">uploadfile_upload_listing.uploadfile_upload_listing.uploadfile_upload_columns_editor</item>
+					<item name="target" xsi:type="string">startEdit</item>
+					<item name="params" xsi:type="array">
+						<item name="0" xsi:type="string">${ $.$data.rowIndex }</item>
+						<item name="1" xsi:type="boolean">true</item>
+					</item>
+				</param>
+			</childDefaults>
+		</settings>
+		<column name="entity_id">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">ID</label>
+			</settings>
+		</column>
+		<column name="file_name">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">File name</label>
+			</settings>
+		</column>
+		<actionsColumn name="actions" class="OmnyfyCustomization\UploadFile\Ui\Component\Listing\UploadFileActions">
+			<settings>
+				<indexField>uploadfile_id</indexField>
+				<resizeEnabled>true</resizeEnabled>
+				<resizeDefaultWidth>300</resizeDefaultWidth>
+			</settings>
+		</actionsColumn>
+	</columns>
+</listing>

@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="OmnyfyCustomization_UploadFile::UploadFile" title="Upload Resource File" module="OmnyfyCustomization_UploadFile" sortOrder="1000" resource="OmnyfyCustomization_UploadFile::UploadFile"/>
+        <add id="OmnyfyCustomization_UploadFile::index" title="Upload Resource File" module="OmnyfyCustomization_UploadFile" sortOrder="10" action="uploadfile/upload/index" resource="OmnyfyCustomization_UploadFile::index" parent="OmnyfyCustomization_UploadFile::UploadFile"/>
+    </menu>
+</config>
